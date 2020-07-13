@@ -1,0 +1,41 @@
+# PHP
+# Test and package your PHP project.
+# Add steps that run tests, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/php
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  phpVersion: 7.2
+
+steps:
+  - task: FtpUpload@2
+    inputs:
+      credentialsOption: 'inputs'
+      serverUrl: 'ftp://dev01.gillz.nl'
+      username: 'andratrouw'
+      password: $(PSWD-ACCP)
+      rootDirectory: 
+      filePatterns: '**'
+      remoteDirectory: '/domains/crm.andratrouwt.nl/public_html/'
+      clean: true
+      cleanContents: false
+      preservePaths: true
+      trustSSL: false
+  - task: FtpUpload@2
+    inputs:
+      credentialsOption: 'inputs'
+      serverUrl: 'ftp://server01.gillz.nl'
+      username: 'andratrouw'
+      password: $(PSWD-PROD)
+      rootDirectory: 
+      filePatterns: '**'
+      remoteDirectory: '/domains/crm.andratrouwt.nl/public_html'
+      clean: true
+      cleanContents: false
+      preservePaths: true
+      trustSSL: false
