@@ -26,6 +26,7 @@ steps:
       cleanContents: false
       preservePaths: true
       trustSSL: false
+  - script: composer install
   - task: FtpUpload@2
     inputs:
       credentialsOption: 'inputs'
@@ -39,3 +40,4 @@ steps:
       cleanContents: false
       preservePaths: true
       trustSSL: false
+  - script: composer install
