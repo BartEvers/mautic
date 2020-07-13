@@ -21,7 +21,7 @@ steps:
       password: $(PSWD-ACCP)
       rootDirectory: 
       filePatterns: '**'
-      remoteDirectory: '/domains/crm.andratrouwt.nl/public_html/'
+      remoteDirectory: '/domains/crm.andratrouwt.dev01.gillz.nl/public_html/'
       clean: true
       cleanContents: false
       preservePaths: true
